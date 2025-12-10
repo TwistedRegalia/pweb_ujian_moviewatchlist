@@ -1,106 +1,105 @@
-<<<<<<< HEAD
-# Movie Watchlist - CRUD Application
+# Aplikasi Daftar Tontonan Film - CRUD
 
-A full-stack movie watchlist application with PHP backend and React frontend.
+Aplikasi full-stack daftar tontonan film dengan backend PHP dan frontend React.
 
 ## Tech Stack
 
-- **Backend**: PHP 7.4+ with MySQL
-- **Frontend**: React 18 with Vite
+- **Backend**: PHP 7.4+ dengan MySQL
+- **Frontend**: React 18 dengan Vite
 - **Database**: MySQL (via XAMPP)
 - **Server**: Apache (via XAMPP)
 
-## Prerequisites
+## Prasyarat
 
-- XAMPP installed and running
-- Node.js 16+ and npm installed
-- PHP 7.4+ (included with XAMPP)
+- XAMPP terpasang dan berjalan
+- Node.js 16+ dan npm terpasang
+- PHP 7.4+ (sudah ada di XAMPP)
 
-## Setup Instructions
+## Langkah Setup
 
-### 1. Database Setup
+### 1. Setup Database
 
-1. Start XAMPP and ensure Apache and MySQL are running
-2. Open your browser and navigate to:
+1. Jalankan XAMPP dan pastikan Apache serta MySQL aktif
+2. Buka browser dan akses:
    ```
    http://localhost/pweb_moviewatchlist/backend/setup/create_database.php
    ```
-3. This will create the `movie_watchlist` database and `movies` table
+3. Ini akan membuat database `movie_watchlist` dan tabel `movies`
 
-### 2. Backend Setup
+### 2. Setup Backend
 
-1. Copy the `backend` folder to your XAMPP `htdocs` directory:
+1. Salin folder `backend` ke direktori `htdocs` XAMPP:
    ```
    C:\xampp\htdocs\pweb_moviewatchlist\backend\
    ```
-2. Ensure the database credentials in `backend/api/config.php` match your XAMPP MySQL settings (default: root, no password)
+2. Pastikan kredensial database di `backend/api/config.php` sesuai dengan pengaturan MySQL XAMPP Anda (default: root, tanpa kata sandi)
 
-### 3. Frontend Setup
+### 3. Setup Frontend
 
-1. Navigate to the frontend directory:
+1. Masuk ke direktori frontend:
    ```bash
    cd frontend
    ```
 
-2. Install dependencies:
+2. Instal dependensi:
    ```bash
    npm install
    ```
 
-3. Update the API URL in the React components if needed:
+3. Perbarui URL API di komponen React jika diperlukan:
    - Default: `http://localhost/pweb_moviewatchlist/backend/api/movies.php`
-   - Edit in: `MovieList.jsx`, `MovieDetails.jsx`, `AddEditForm.jsx`
+   - Edit di: `MovieList.jsx`, `MovieDetails.jsx`, `AddEditForm.jsx`
 
-4. Start the development server:
+4. Jalankan server pengembangan:
    ```bash
    npm run dev
    ```
 
-5. Open your browser to:
+5. Buka browser ke:
    ```
    http://localhost:3000
    ```
 
-## Project Structure
+## Struktur Proyek
 
 ```
 pweb_moviewatchlist/
 ├── backend/
 │   ├── api/
-│   │   ├── config.php          # Database configuration
-│   │   └── movies.php          # CRUD API endpoints
+│   │   ├── config.php          # Konfigurasi database
+│   │   └── movies.php          # Endpoint CRUD API
 │   └── setup/
-│       └── create_database.php # Database setup script
+│       └── create_database.php # Skrip setup database
 ├── frontend/
 │   ├── src/
-│   │   ├── components/         # React components
-│   │   ├── styles/            # CSS styles
-│   │   └── App.jsx            # Main app component
-│   └── package.json           # Node dependencies
+│   │   ├── components/         # Komponen React
+│   │   ├── styles/             # CSS
+│   │   └── App.jsx             # Komponen utama
+│   └── package.json            # Dependensi Node
 └── README.md
 ```
 
-## Features
+## Fitur
 
-- ✅ Create, Read, Update, Delete movies
-- ✅ Movie details page with full information
-- ✅ Search and filter movies
-- ✅ Sort by title, rating, or date
-- ✅ Toggle between poster and list view
-- ✅ Add/edit reviews for movies
-- ✅ Responsive, mobile-friendly design
-- ✅ Cinematic theme inspired by Letterboxd/Netflix
-- ✅ Secure PHP with prepared statements
+- ✅ Create, Read, Update, Delete film
+- ✅ Halaman detail film dengan informasi lengkap
+- ✅ Pencarian dan filter film
+- ✅ Urutkan berdasarkan judul, rating, atau tanggal
+- ✅ Beralih antara tampilan poster dan daftar
+- ✅ Tambah/edit ulasan untuk film
+- ✅ Desain responsif dan ramah mobile
+- ✅ Tema sinematik terinspirasi Letterboxd/Netflix
+- ✅ PHP aman dengan prepared statements
 
-## API Endpoints
+## Endpoint API
 
-- `GET /api/movies.php` - Get all movies
-- `GET /api/movies.php?id={id}` - Get single movie
-- `POST /api/movies.php` - Create new movie
-- `PUT /api/movies.php` - Update movie
-- `DELETE /api/movies.php` - Delete movie
+- `GET /api/movies.php` - Ambil semua film
+- `GET /api/movies.php?id={id}` - Ambil satu film
+- `POST /api/movies.php` - Buat film baru
+- `PUT /api/movies.php` - Perbarui film
+- `DELETE /api/movies.php` - Hapus film
 
-## Database Schema
+## Skema Database
 
 ```sql
 movies (
@@ -119,30 +118,26 @@ movies (
 
 ## Troubleshooting
 
-### CORS Issues
-If you encounter CORS errors, ensure the backend `config.php` has the correct CORS headers set.
+### Masalah CORS
+Jika menemui error CORS, pastikan `config.php` di backend memiliki header CORS yang benar.
 
-### Database Connection
-Verify MySQL is running in XAMPP and check credentials in `config.php`.
+### Koneksi Database
+Pastikan MySQL di XAMPP berjalan dan cek kredensial di `config.php`.
 
-### API Not Found
-Ensure the backend files are in the correct XAMPP htdocs path and Apache is running.
+### API Tidak Ditemukan
+Pastikan berkas backend ada di path `htdocs` XAMPP yang benar dan Apache aktif.
 
-## Production Build
+## Build Produksi
 
-To build for production:
+Untuk build produksi:
 
 ```bash
 cd frontend
 npm run build
 ```
 
-The built files will be in `frontend/dist/` and can be served via Apache or any static file server.
+Berkas hasil build ada di `frontend/dist/` dan dapat dilayani lewat Apache atau server statis lainnya.
 
-## License
+## Lisensi
 
 MIT
-
-=======
-# pweb_ujian_moviewatchlist
->>>>>>> 853b742c3f1ecd400a11911595001f3efef35dbb
