@@ -28,7 +28,7 @@ switch ($method) {
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
-            
+
             if ($result->num_rows > 0) {
                 $movie = $result->fetch_assoc();
                 echo json_encode(processMovieData($movie));
@@ -46,11 +46,11 @@ switch ($method) {
             echo json_encode($movies);
         }
         break;
-        
+
     case 'POST':
         // Add new movie
         $data = json_decode(file_get_contents('php://input'), true);
-        
+
         $title = $data['title'] ?? '';
         $description = $data['description'] ?? '';
         $plot = $data['plot'] ?? '';
@@ -58,10 +58,10 @@ switch ($method) {
         $rating = floatval($data['rating'] ?? 0);
         $reviews = json_encode($data['reviews'] ?? []);
         $poster_url = $data['poster_url'] ?? '';
-        
+
         $stmt = $conn->prepare("INSERT INTO movies (title, description, plot, actors, rating, reviews, poster_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssdss", $title, $description, $plot, $actors, $rating, $reviews, $poster_url);
-        
+
         if ($stmt->execute()) {
             echo json_encode(['success' => true, 'id' => $conn->insert_id]);
         } else {
@@ -70,12 +70,12 @@ switch ($method) {
         }
         $stmt->close();
         break;
-        
+
     case 'PUT':
         // Update movie
         $data = json_decode(file_get_contents('php://input'), true);
         $id = intval($data['id']);
-        
+
         $title = $data['title'] ?? '';
         $description = $data['description'] ?? '';
         $plot = $data['plot'] ?? '';
@@ -83,10 +83,10 @@ switch ($method) {
         $rating = floatval($data['rating'] ?? 0);
         $reviews = json_encode($data['reviews'] ?? []);
         $poster_url = $data['poster_url'] ?? '';
-        
+
         $stmt = $conn->prepare("UPDATE movies SET title=?, description=?, plot=?, actors=?, rating=?, reviews=?, poster_url=? WHERE id=?");
         $stmt->bind_param("ssssdssi", $title, $description, $plot, $actors, $rating, $reviews, $poster_url, $id);
-        
+
         if ($stmt->execute()) {
             echo json_encode(['success' => true]);
         } else {
@@ -95,15 +95,15 @@ switch ($method) {
         }
         $stmt->close();
         break;
-        
+
     case 'DELETE':
         // Delete movie
         $data = json_decode(file_get_contents('php://input'), true);
         $id = intval($data['id']);
-        
+
         $stmt = $conn->prepare("DELETE FROM movies WHERE id = ?");
         $stmt->bind_param("i", $id);
-        
+
         if ($stmt->execute()) {
             echo json_encode(['success' => true]);
         } else {
@@ -112,7 +112,7 @@ switch ($method) {
         }
         $stmt->close();
         break;
-        
+
     default:
         http_response_code(405);
         echo json_encode(['error' => 'Method not allowed']);
